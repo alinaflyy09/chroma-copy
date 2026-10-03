@@ -2,23 +2,51 @@
 <html>
 <head>
     <title>Copy Chroma SMP Message</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: #000000;
+        }
+
+        #copyLink {
+            font-size: 28px;
+            font-weight: bold;
+            color: #5865F2;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #copyLink:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
+
 <body>
 
-<a href="#" onclick="navigator.clipboard.writeText(`@everyone
+<a href="#" id="copyLink">📋 Copy Chroma SMP Message</a>
+
+<script>
+    const message = `@everyone
 ## The official Chroma SMP Discord!!!
 
 **Chroma SMP** is a Discord and Minecraft community built to boost content creators, make friends, and create unforgettable moments. This community has rules and regulations set to make sure everyone always has the most exciting moments! :star_struck:
 
-This is a content creator only server built for maxuimum *player count* and *engagement*.
-Everyone is allowed regardless or differences! :kissing_heart:
+This is a content creator-only server built for maximum *player count* and *engagement*.
+Everyone is allowed, regardless of differences! :kissing_heart:
 
-### The server consist of...
+### The server consists of...
 - Competitive aspect 
 - Amazing server performance
 - Rules for safety
-- Restriction's on cheats
-- Formalness for perfect ownership
+- Restrictions on cheats
+- Formality for perfect ownership
 - Amazing content potential 
 
 ### We are looking for...
@@ -29,9 +57,22 @@ Everyone is allowed regardless or differences! :kissing_heart:
 - Caring individuals
 
 **Join us now** 
-https://discord.gg/P3fJEF5HYC`); return false;">
-    📋 Copy Chroma SMP Message
-</a>
+https://discord.gg/P3fJEF5HYC`;
+
+    const copyLink = document.getElementById("copyLink");
+
+    copyLink.addEventListener("click", async function(event) {
+        event.preventDefault();
+
+        try {
+            await navigator.clipboard.writeText(message);
+
+            copyLink.textContent = 'You copied "Chroma SMP" template to your clipboard';
+        } catch (error) {
+            console.error("Failed to copy:", error);
+        }
+    });
+</script>
 
 </body>
 </html>
